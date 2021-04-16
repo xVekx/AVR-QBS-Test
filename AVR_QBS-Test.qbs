@@ -16,7 +16,7 @@ Project {
 
         Group {
             name: "h"
-            files: ["*.h"]
+            files: ["*.h","inc_test/*.h"]
             fileTags: ['h']
         }
 
@@ -73,7 +73,8 @@ Project {
             }
             prepare: {
                 var args = [];
-                args = args.concat(product.avr_compiler_options)
+                args = args.concat(product.avr_compiler_options);
+                args.push('-I' + product.sourceDirectory + '/inc_test');
                 args.push('-c');
                 args.push(input.filePath);
                 args.push('-o');
